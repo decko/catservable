@@ -55,3 +55,13 @@ def test_filter_breeds_by_its_temper(client, catbreeds):
     request = client.get(url)
 
     assert len(request.data) == 2
+
+
+def test_filter_breeds_by_its_origin(client, catbreeds):
+
+    viewname = "core:breeds_list"
+    url = f"{reverse(viewname)}?origin=Brazil"
+
+    request = client.get(url)
+
+    assert len(request.data) == 2
