@@ -4,7 +4,11 @@ from .models import CatBreed
 from .serializers import CatBreedModelSerializer
 
 
-class CatBreedAPIView(ListAPIView, RetrieveAPIView):
+class CatBreedListAPIView(ListAPIView):
     queryset = CatBreed.objects.all()
     serializer_class = CatBreedModelSerializer
 
+
+class CatBreedRetrieveAPIView(RetrieveAPIView):
+    queryset = CatBreed.objects.all()
+    serializer_class = CatBreedModelSerializer
