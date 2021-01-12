@@ -15,6 +15,7 @@ prettyconf = "^2.2.1"
 dj-database-url = "^0.5.0"
 model-bakery = "^1.2.1"
 django-filter = "^2.4.0"
+tapioca-wrapper = "^2.0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.1"
