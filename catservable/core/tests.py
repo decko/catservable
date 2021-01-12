@@ -21,3 +21,16 @@ def test_attributes_for_cat_breed_model():
 
     for attribute in attributes:
         assert hasattr(CatBreed, attribute)
+
+
+def test_return_attributes_on_a_GET_request(client, catbreed):
+
+    attributes = {"origin", "temperament", "description"}
+
+    viewname = "core:breeds_list"
+    url = reverse(viewname)
+
+    request = client.get(url)
+    breed_data = request.data[0]
+
+    assert attributes < set(breed_data.keys())

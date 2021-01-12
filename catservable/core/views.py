@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 
-# Create your views here.
+from .models import CatBreed
+from .serializers import CatBreedModelSerializer
+
+
+class CatBreedAPIView(ListAPIView, RetrieveAPIView):
+    queryset = CatBreed.objects.all()
+    serializer_class = CatBreedModelSerializer
+
