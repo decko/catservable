@@ -8,4 +8,4 @@ class ArrayFilter(filters.FilterSet):
 
     class Meta:
         model = CatBreed
-        fields = ("temperament",)
+        fields = ("origin", "temperament",)
