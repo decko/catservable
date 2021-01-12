@@ -15,25 +15,25 @@ def catbreed():
 
 @pytest.fixture
 def energetic_temper_breed():
-    breed = baker.make("core.CatBreed", temperament=["Energetic"])
+    breed = baker.make("core.CatBreed", temperament=["Energetic"], origin="Uruguay")
     return breed
 
 
 @pytest.fixture
 def intelligent_temper_breed():
-    breed = baker.make("core.CatBreed", temperament=["Intelligent"])
+    breed = baker.make("core.CatBreed", temperament=["Intelligent"], origin="Brazil")
     return breed
 
 
 @pytest.fixture
 def independent_temper_breed():
-    breed = baker.make("core.CatBreed", temperament=["Independent"])
+    breed = baker.make("core.CatBreed", temperament=["Independent"], origin="Argentina")
     return breed
 
 
 @pytest.fixture
 def super_breed():
-    breed = baker.make("core.CatBreed", temperament=["Independent", "Energetic"])
+    breed = baker.make("core.CatBreed", temperament=["Independent", "Energetic"], origin="Brazil")
     return breed
 
 
