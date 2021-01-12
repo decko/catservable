@@ -6,4 +6,6 @@ from model_bakery import baker
 def catbreed():
     breed = baker.make("core.CatBreed")
 
-    return catbreed
+    yield breed
+
+    breed.delete()
