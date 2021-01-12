@@ -45,3 +45,13 @@ def test_return_a_specific_breed_on_a_GET_request(client, catbreed):
 
     assert request.data
     assert isinstance(request.data, dict)
+
+
+def test_filter_breeds_by_its_temper(client, catbreeds):
+
+    viewname = "core:breeds_list"
+    url = f"{reverse(viewname)}?temperament=Energetic"
+
+    request = client.get(url)
+
+    assert len(request.data) == 2
