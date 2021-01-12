@@ -34,3 +34,14 @@ def test_return_attributes_on_a_GET_request(client, catbreed):
     breed_data = request.data[0]
 
     assert attributes < set(breed_data.keys())
+
+
+def test_return_a_specific_breed_on_a_GET_request(client, catbreed):
+
+    viewname = "core:breeds_detail"
+    url = reverse(viewname, kwargs={"pk": catbreed.pk})
+
+    request = client.get(url)
+
+    assert request.data
+    assert isinstance(request.data, dict)
