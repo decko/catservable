@@ -1,3 +1,12 @@
-from django.test import TestCase
+from django.urls import reverse
 
-# Create your tests here.
+
+
+
+def test_url_to_list_cat_breeds():
+
+    viewname = "core:breeds_list"
+
+    url = reverse(viewname)
+
+    assert url == "/breeds/"
