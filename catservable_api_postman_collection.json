@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "ceb32cff-d719-4284-b70e-352ad12756e3",
+		"name": "Catservable API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Cat Breeds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/breeds/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"breeds",
+						""
+					]
+				},
+				"description": "List all cat breeds."
+			},
+			"response": []
+		},
+		{
+			"name": "Get information about a cat breed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/breeds/abys/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"breeds",
+						"abys",
+						""
+					]
+				},
+				"description": "List information about a specific cat breed"
+			},
+			"response": []
+		},
+		{
+			"name": "Search for breeds using temperament information",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/breeds/search/temper/Intelligent",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"breeds",
+						"search",
+						"temper",
+						"Intelligent"
+					]
+				},
+				"description": "Look for breeds with a certain temperament"
+			},
+			"response": []
+		},
+		{
+			"name": "Search for breeds using origin information",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/breeds/search/origin/Egypt",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"breeds",
+						"search",
+						"origin",
+						"Egypt"
+					]
+				},
+				"description": "Look for breeds with a certain origin"
+			},
+			"response": []
+		}
+	]
+}
