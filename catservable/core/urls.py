@@ -4,6 +4,6 @@ from .views import CatBreedListAPIView, CatBreedRetrieveAPIView
 
 app_name = "core"
 urlpatterns = [
-    path('breeds/<int:pk>/', CatBreedRetrieveAPIView.as_view(), name="breeds_detail"),
+    path('breeds/<str:pk>/', CatBreedRetrieveAPIView.as_view(), name="breeds_detail"),
     path('breeds/', CatBreedListAPIView.as_view(), name="breeds_list")
 ]
