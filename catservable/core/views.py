@@ -25,3 +25,12 @@ def cat_breed_search_by_temper(request, *args, **kwargs):
 
     breeds = CatBreedModelSerializer(queryset, many=True)
     return Response(breeds.data)
+
+
+@api_view(http_method_names=['GET'])
+def cat_breed_search_by_origin(request, *args, **kwargs):
+    origin = kwargs.get("origin")
+    queryset = CatBreed.objects.filter(origin__icontains=origin)
+
+    breeds = CatBreedModelSerializer(queryset, many=True)
+    return Response(breeds.data)

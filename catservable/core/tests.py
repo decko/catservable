@@ -59,8 +59,8 @@ def test_filter_breeds_by_its_temper(client, catbreeds):
 
 def test_filter_breeds_by_its_origin(client, catbreeds):
 
-    viewname = "core:breeds_list"
-    url = f"{reverse(viewname)}?origin=Brazil"
+    viewname = "core:breeds_origin_search"
+    url = reverse(viewname, kwargs={"origin": "Brazil"})
 
     request = client.get(url)
 
