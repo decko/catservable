@@ -1,7 +1,13 @@
 from rest_framework import serializers
 
 from .fields import StringArrayField
-from .models import CatBreed
+from .models import CatBreed, CatImage
+
+
+class CatImageModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CatImage
+        fields = "__all__"
 
 
 class CatBreedModelSerializer(serializers.ModelSerializer):
