@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 
 class Command(BaseCommand):
     help = "Retrieve all cat breeds from TheCatAPI."
+    requires_migrations_checks = True
 
     def handle(self, *args, **kwargs):
         api = CatAPI()
