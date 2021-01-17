@@ -49,8 +49,8 @@ def test_return_a_specific_breed_on_a_GET_request(client, catbreed):
 
 def test_filter_breeds_by_its_temper(client, catbreeds):
 
-    viewname = "core:breeds_list"
-    url = f"{reverse(viewname)}?temperament=Energetic"
+    viewname = "core:breeds_temper_search"
+    url = reverse(viewname, kwargs={"temper": "Energetic"})
 
     request = client.get(url)
 
