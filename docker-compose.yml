@@ -1,0 +1,106 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+        - POSTGRES_DB=catservable
+        - POSTGRES_USER=catservable
+        - POSTGRES_PASSWORD=catservable
+    restart: always
+
+  catservable-base-img:
+    build: .
+    image: catservable-base-img
+    restart: "no"
+
+  migrations:
+    image: catservable-base-img
+    depends_on:
+      - db
+    environment:
+      - DEBUG 
+      - DATABASE_URL=postgres://catservable:catservable@db/catservable
+    restart: "no"
+    command: bash -c 'while ! nc -z db 5432 2>/dev/null; do sleep 1; done; poetry run ./manage.py migrate'
+
+  api:
+    image: catservable-base-img
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://catservable:catservable@db/catservable
+      - PYTHONUNBUFFERED=1
+    restart: "always"
+    command: poetry run ./manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    logging:
+      driver: "gelf"
+      options:
+        gelf-address: "udp://127.0.0.1:12201"
+
+  prometheus:
+    image: prom/prometheus
+    depends_on:
+      - api
+    restart: "always"
+    volumes:
+      - type: bind
+        source: ./prometheus
+        target: /etc/prometheus
+    ports:
+      - "9090:9090"
+    links:
+      - api
+
+  grafana:
+    image: grafana/grafana
+    depends_on:
+      - prometheus
+    restart: "always"
+    volumes:
+      - type: bind
+        source: ./grafana/provisioning
+        target: /etc/grafana/provisioning
+      - type: bind
+        source: ./grafana/config.ini
+        target: /etc/grafana/config.ini
+      - type: bind
+        source: ./grafana/dashboards
+        target: /var/lib/grafana/dashboards
+    ports:
+      - "3000:3000"
+
+  mongo:
+    image: mongo:4.2
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.0
+    environment:
+      - http.host=0.0.0.0
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+
+  graylog:
+    image: graylog/graylog:4.0
+    environment:
+      - GRAYLOG_HTTP_BIND_ADDRESS=0.0.0.0:9000
+      - GRAYLOG_HTTP_EXTERNAL_URI=http://localhost:9000/
+      - GRAYLOG_HTTP_PUBLISH_URI=http://127.0.0.1:9000
+      - GRAYLOG_CONTENT_PACKS_AUTO_LOAD=django_logs.json
+      - GRAYLOG_CONTENT_PACKS_LOADER_ENABLED=true
+      - GRAYLOG_CONTENT_PACKS_DIR=data/contentpacks
+    ports:
+      - "9000:9000"
+      # - "12201:12201"
+      - "12201:12201/udp"
+      - "1514:1514"
+    volumes:
+      - type: bind
+        source: ./graylog/django_logs.json
+        target: /usr/share/graylog/data/contentpackg/django_logs.json
+    depends_on:
+      - mongo
+      - elasticsearch
+    restart: "always"
