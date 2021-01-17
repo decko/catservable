@@ -12,3 +12,9 @@ class CatBreed(models.Model):
 
     def __str__(self):
         return f"{self.name} - origin: {self.origin}"
+
+
+class CatImage(models.Model):
+    id = models.CharField(max_length=15, primary_key=True)
+    breed = models.ForeignKey(CatBreed, null=True, on_delete=models.CASCADE)
+    url = models.URLField()
