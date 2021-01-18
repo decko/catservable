@@ -28,7 +28,7 @@
           },
           "port": {
             "@type": "integer",
-            "@value": 5555
+            "@value": 12201
           },
           "number_worker_threads": {
             "@type": "integer",
