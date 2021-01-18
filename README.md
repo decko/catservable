@@ -3,11 +3,11 @@ A simple API with amazing information about cats! 🐱
 
 ## Summary
 
-1. [About this project](#about_this_project)
-3. [API and endpoints](#api_and_endpoints)
-4. [About the architecture](#about_the_architecture)
-5. [How to run this project](#how_to_run_this_project)
-6. [About logs and metrics](#about_logs_and_metrics)
+1. [About this project](#about-this-project)
+3. [API and endpoints](#api-and-endpoints)
+4. [About the architecture](#about-the-architecture)
+5. [How to run this project](#how-to-run-this-project)
+6. [About logs and metrics](#about-logs-and-metrics)
 
 
 ## About this project
