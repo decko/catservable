@@ -67,7 +67,7 @@ You can access it on http://localhost:9090
 
 ### Grafana
 Grafana is a visualization and analytics tool that can consume Prometheus information and generate visual indicators from it. We're already setup it so you just have to access http://localhost:3000 using *admin* as user and password. You will be asked to change your password. When entering, look for the `SRE Dashboard`, click and it will take you to the screen below:
-![Grafana with the SRE Dashboard](https://github.com/decko/catservable/blob/main/image.jpg?raw=true)
+![Grafana with the SRE Dashboard](https://github.com/decko/catservable/blob/main/granafa/grafana-sre-dashboard.png?raw=true)
 
 ### Graylog
 Graylog is one of the leaders solutions for log management. Sadly we couldn't find a way to configure it on the startup process. To help, we've created a Content Pack, with the input needed to consume the example application logs and a simple dashboard. To install it, go to **System -> Content Packs**. Upload the `django_logs.json` file that could be found on `graylog` folder. After that, you need to roll down the list, find the `SRE Log Dashboard`, and click on **Install** button.
