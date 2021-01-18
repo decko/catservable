@@ -4,10 +4,10 @@ A simple API with amazing information about cats! 🐱
 ## Summary
 
 1. [About this project](#about_this_project)
-3. API and endpoints
-4. About the architecture
-5. How to run this project
-6. About logs and metrics
+3. [API and endpoints](#api_and_endpoints)
+4. [About the architecture](#about_the_architecture)
+5. [How to run this project](#how_to_run_this_project)
+6. [About logs and metrics](#about_logs_and_metrics)
 
 
 ## About this project
@@ -55,9 +55,9 @@ If it's the first time you're running the application, remember to run the jobs 
 ## About logs and metrics
 
 We're using Prometheus for instrumentation and metrics, Grafana for Dashboards and Graylog to log management. We will talk about each one below.
-1. Prometheus
-2. Grafana
-3. Graylog
+1. [Prometheus](#prometheus)
+2. [Grafana](#grafana)
+3. [Graylog](#graylog)
 
 ### Prometheus
 Prometheus is a timeseries database system(TSDB) developed by the SoundCloud team to gather metrics and insights about running systems. Different from classic metrics systems like NewRelic or ElasticAPM, the application which will be metrified exposes a endpoint with all the information and Prometheus will scrape them. 
