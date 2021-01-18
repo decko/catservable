@@ -110,3 +110,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGGERS = "catservable.core"
+LOG_LEVEL = "DEBUG"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        }
+    },
+    "loggers": {
+        "catservable.core": {
+            "handlers": ["console"],
+            "level": LOG_LEVEL,
+        }
+    }
+
+}
